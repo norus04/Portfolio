@@ -1,103 +1,178 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+// Mock data
+const mockProjects = [
+  {
+    id: 1,
+    title: "Example title",
+    description: "Example description",
+    image_url: null,
+    github_url: "https://github.com",
+    live_url: "https://example.com"
+  },
+  {
+    id: 2,
+    title: "Example title",
+    description: "Example description",
+    image_url: null,
+    github_url: "https://github.com",
+    live_url: "https://example.com"
+  }
+];
+
+const mockExperiences = [
+  {
+    id: 1,
+    title: "Example title",
+    company: "Example company",
+    start_date: "7/24/2025",
+    end_date: "7/24/2025",
+    description: [
+      "Example description",
+      "Example description"
+    ]
+  },
+  {
+    id: 2,
+    title: "Example title",
+    company: "Example company",
+    start_date: "7/24/2025",
+    end_date: "7/24/2025",
+    description: [
+      "Example description",
+      "Example description"
+    ]
+  }
+];
+
+// Hero
+const HeroSection = () => (
+  <section className="min-h-screen flex items-center pt-16">
+    <div className="max-w-5xl mx-auto px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center"
+      >
+        <h1 className="text-4xl md:text-6xl font-medium text-gray-900 mb-4">
+          Noah Rushing
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          Example statement
+        </p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+// About
+const AboutSection = () => (
+  <section id="about" className="py-20 md:py-32">
+    <div className="max-w-5xl mx-auto px-6">
+      <div className="grid md:grid-cols-3 gap-12">
+        <div className="md:col-span-1">
+          <h2 className="text-2xl font-medium text-gray-900">About Me</h2>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="md:col-span-2 space-y-4 text-gray-600 leading-relaxed">
+          <p>
+            Section 1
+          </p>
+          <p>
+            Section 2
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// Projects
+const ProjectsSection = () => {
+  return (
+    <section id="work" className="py-20 md:py-32 bg-gray-50">
+      <div className="max-w-5xl mx-auto px-6">
+        <h2 className="text-2xl font-medium text-gray-900 mb-12">Featured Work</h2>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
+          {mockProjects.map(project => (
+            <div key={project.id} className="group">
+              <div className="aspect-[16/10] bg-gray-200 rounded-md mb-6 overflow-hidden">
+                {project.image_url ? (
+                  <img src={project.image_url} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 font-light text-2xl">
+                    {project.title.slice(0, 2)}
+                  </div>
+                )}
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">{project.title}</h3>
+              <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+              <a href={project.github_url || project.live_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                View Project <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Experience
+const ExperienceSection = () => {
+  return (
+    <section id="experience" className="py-20 md:py-32">
+      <div className="max-w-5xl mx-auto px-6">
+        <h2 className="text-2xl font-medium text-gray-900 mb-12">Experience</h2>
+        <div className="border-l border-gray-200">
+          {mockExperiences.map(exp => (
+            <div key={exp.id} className="relative pl-12 pb-12 last:pb-0">
+              <div className="absolute -left-1.5 top-1.5 w-3 h-3 bg-gray-900 rounded-full" />
+              <p className="text-sm text-gray-500 mb-1">
+                {new Date(exp.start_date).getFullYear()} - {exp.end_date ? new Date(exp.end_date).getFullYear() : 'Present'}
+              </p>
+              <h3 className="text-lg font-medium text-gray-900">{exp.title}</h3>
+              <p className="text-md text-gray-600 mb-3">{exp.company}</p>
+              <ul className="list-disc list-outside pl-5 space-y-1 text-sm text-gray-600">
+                {exp.description?.slice(0, 2).map((desc, i) => (
+                  <li key={i}>{desc}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Contact
+const ContactSection = () => (
+  <section id="contact" className="py-20 md:py-32 bg-gray-900 text-white">
+    <div className="max-w-5xl mx-auto px-6 text-center">
+      <h2 className="text-3xl md:text-4xl font-medium mb-4">Let's Connect</h2>
+      <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        Example description
+      </p>
+      <a href="mailto:email@example.com" className="inline-block bg-white text-gray-900 font-medium px-8 py-3 rounded-md hover:bg-gray-200 transition-colors">
+        email@example.com
+      </a>
+    </div>
+  </section>
+);
+
+export default function HomePage() {
+  return (
+    <div>
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <ExperienceSection />
+      <ContactSection />
     </div>
   );
-}
+} 
