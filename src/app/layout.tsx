@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Metadata } from "next";
+import Image from "next/image";
 import "./globals.css";
 
 const navItems = [
@@ -45,13 +46,18 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-white text-gray-800 font-sans antialiased">
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="flex justify-between items-center h-16">
+        <div className="max-w-5xl mx-auto px-6">
+        <div className="flex justify-between items-center h-20">
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="font-semibold text-lg text-gray-900"
+                className="flex items-center hover:cursor-pointer"
               >
-                Noah Rushing
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                />
               </button>
               <nav className="hidden md:flex items-center space-x-8">
                 {navItems.map((item) => (
